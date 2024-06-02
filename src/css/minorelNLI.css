@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     gap: 100px;
-    background-color: #19A7CE;
+    background-color: #1F79E5;
     padding: 73px 10vw;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .puscoltext h1 span{
-    color: #3A1CF5;
+    color: #1F79E5;
 }
 
 .puscoltext h4{
@@ -152,7 +152,7 @@
 }
 
 .whtoptext h5{
-    color: #003BAD;
+    color: #1F79E5;
     font-size: 18px;
 }
 .whtoptext h4{
@@ -206,7 +206,7 @@
 }
 
 .wltoptext h5{
-    color: #003BAD;
+    color: #1F79E5;
     font-size: 18px;
 }
 .wltoptext h4{
@@ -257,7 +257,7 @@
     font-weight: bold;
 }
 .wlcont h1 span{
-    color: #3A1CF5;
+    color: #1F79E5;
 }
 .wlcont h4{
     color: #7e7e7e;
@@ -269,7 +269,7 @@
     font-size: 16px;
 }
 .wlcont a{
-    color: #003BAD;
+    color: #1F79E5;
     font-size: 16px;
     text-decoration: underline;
 }
