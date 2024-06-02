@@ -37,8 +37,8 @@
 .navactive{
     font-weight: 600 !important;
     padding-bottom: 4px !important;
-    color: #3A1CF5 !important;
-    border-bottom: 4px solid #3A1CF5 !important;
+    color: #1F79E5 !important;
+    border-bottom: 4px solid #1F79E5 !important;
 }
 
 .loginbuttons{
@@ -48,8 +48,8 @@
     width: 175px;
     height: 45px;
     border-radius: 100px !important;
-    background-color: rgba(58,28,245,0.12) !important;
-    color: rgba(58,28,245,0.69) !important;
+    background-color: #E7EFFF !important;
+    color: #1F79E5 !important;
     border: none !important;
     font-family: "Kumbh Sans", sans-serif !important;
     font-size: 20px !important;
@@ -101,7 +101,7 @@
 .footermain{
     padding: 80px;
     width: 100% !important;
-    background-color: #dfdcf9;
+    background-color: #F8F8F8;
     margin: 0 !important;
 }
 
