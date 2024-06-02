@@ -13,7 +13,8 @@ export default function Buttonelement({id,fw,br,width,height,content,arrow,fs}) 
                 fontFamily: 'Roboto',
                 fontSize: fs,
                 width: width ? width : 'auto',
-                height: height ? height : 'auto'
+                height: height ? height : 'auto',
+                backgroundColor: '#1F79E5',
             }}>
             {content}
             {arrow && 
