@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.buttonelement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #19a7ce;
+  border: none;
+}
+
+.buttonelement:hover {
+  background-color: #1ec2f0 !important;
+}

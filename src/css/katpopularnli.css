@@ -1,0 +1,122 @@
+.katpopularmain{
+    padding: 20px 80px;
+    
+}
+
+.titlekat{
+    font-family: 'Roboto';
+    color: #4a4a4a;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.titlekat span{
+    color:  #1F79E5;
+}
+
+.katcontain{
+    margin: 20px 0px;
+    position: relative;
+}
+
+.katbox{
+    padding: 5px 0;
+    overflow-x: scroll;
+    gap: 55.5px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.katbox::-webkit-scrollbar {
+    display: none;
+}
+
+.arrow-button {
+    position: absolute;
+    top: 50%;
+    background-color: #ffffff;
+    transition: ease-in-out 0.3s;
+    width: 63px;
+    height: 63px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    text-align: center;
+    color: #7e7e7e;
+    box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.15);
+}
+
+.arrow-button:hover{
+    background-color: rgb(217, 217, 217);
+}
+
+.arrow-button p{
+    margin: 0;
+}
+
+.arrow-button.left {
+    left: 0;
+    transform: translate(-50%,-50%);
+}
+
+.arrow-button.right {
+    right: 0;
+    transform: translate(50%,-50%);
+}
+
+.arric{
+    position: absolute;
+}
+
+.arric.lefti{
+    transform: translate(-30%,-50%);
+}
+
+.arric.righti{
+    transform: translate(-50%,-50%);
+}
+
+/*catpcard*/
+#catpmain{
+    width: 298px !important;
+    height: 350.48formpx !important;
+    box-shadow: 0px 1px 0px 1px rgba(0,0,0,0.25);
+    -webkit-box-shadow: 0px 1px 0px 1px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 1px 0px 1px rgba(0,0,0,0.25);
+}
+
+.catpbd{
+    font-family: 'Roboto';
+    width: 298px !important;
+}
+
+.catptitle,.catptext{
+    margin-bottom: 0 !important;
+}
+
+.catptitle{
+    color: #2b2b2b;
+    font-size: 18px !important;
+    font-weight:bold;
+}
+
+.catptext,.catprt,.catpcount{
+    color: #4a4a4a;
+    font-size: 12px;
+}
+
+.catpstarcnt img{
+    width: 10.6px;
+    height: 9.99px;
+}
+
+.catpimg{
+    width: 298px !important;
+    height: 248px !important;
+    object-fit: cover;
+    object-position: center;
+}

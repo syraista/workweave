@@ -1,0 +1,161 @@
+/*card main*/
+.cardcatmain {
+  width: 399px;
+  height: 119px;
+  border-radius: 18.4px;
+  background-color: white;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  font-family: 'Roboto';
+  align-items: center;
+  padding-left: 20px;
+  gap: 20px;
+}
+
+.cardcatmain img {
+  width: 83.4px;
+  height: 83.4px;
+}
+
+.cardcatmain div {
+  height: 100%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cardcatmain h4 {
+  font-size: 29px;
+  color: #444444;
+  margin: 0;
+}
+
+.cardcatmain p {
+  font-size: 14.5px;
+  color: #292929;
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/*Notif bar*/
+.notifbar {
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+}
+
+.notifbar p {
+  margin: 0;
+}
+
+.notifbar-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.notifbar-header input {
+  margin-right: 10px;
+}
+
+.blue-dot {
+  width: 10px;
+  height: 10px;
+  background-color: blue;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: -5px;
+  margin-right: -5px;
+}
+
+/*faqcard*/
+.faqcrdmn {
+  background-color: #ffffff;
+  width: 394px !important;
+  height: 494px !important;
+  border-radius: 10px;
+  border: 1px solid #7e7e7e;
+  padding: 20px 10px;
+  margin-bottom: 40px;
+}
+
+.faqtitle {
+  font-size: 19px;
+  font-weight: bold;
+  color: #2b2b2b !important;
+}
+
+.faqansw {
+  font-size: 19px;
+  color: #2b2b2b !important;
+  text-overflow: ellipsis;
+}
+
+.faqlink {
+  color: #003bad !important;
+}
+
+/*Proyek card*/
+.proyekcrdmain {
+  background-color: #ffffff;
+  width: 100%;
+  height: 123px !important;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid grey;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.notifcountnum {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #f50000;
+  font-size: 13px;
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Arrpovalcard*/
+.approvalcrdmain {
+  background-color: #ffffff;
+  width: 100%;
+  height: 98px !important;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid grey;
+  margin-bottom: 10px;
+  cursor: default;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*proyekjoin*/
+.custom-modal7 {
+  max-width: 600px !important;
+}
+
+.custom-modal7 .modal-content {
+  height: 350px !important;
+  border-radius: 20px !important;
+}

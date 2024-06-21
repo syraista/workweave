@@ -1,0 +1,252 @@
+.myprjsec{
+  font-family: 'Roboto';
+  user-select: none;
+  background-image: url("assets/projectbg.png");
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  background-position: 100% 440px;
+  padding-bottom: 400px;
+}
+
+.initpadding{
+  padding: 0 100px;
+}
+
+.projtitles{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0;
+  font-weight: bold;
+  color: #4a4a4a;
+  font-size: 60px;
+}
+
+.projtitles span{
+  color: #1F79E5;
+}
+
+.projbtnmainct{
+  padding: 0 100px;
+  margin-bottom: 60px;
+}
+
+.prjbtncont{
+  width: 399px;
+  height: 63px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+  background-color: rgb(175, 211, 226, 0.23);
+  border-radius: 100px;
+}
+
+.btnproject{
+  width: 167px;
+  height: 39px;
+  background-color: white;
+  color: #19A7CE;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.createprjbtn{
+  width: 208px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: #1F79E5;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.createprjbtn span{
+  font-size: 40px;
+}
+
+.prjbtnactivestate{
+  background-color: #1F79E5;
+  color: white;
+}
+
+.prjheadcontainer{
+  width: 100%;
+  height: 108px;
+  background-color: #f4fafc;
+  padding: 0 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-containerproj {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-iconprj {
+  position: absolute;
+  left:20px;
+  color: #757575 !important;
+}
+
+.input-containerproj input {
+  background-color: transparent !important;
+  width: 205px;
+  padding-left: 60px;
+  box-sizing: border-box;
+  height: 51px;
+  border: 2px solid #ccc;
+  border-radius: 100px;
+  font-size: 16px;
+  color: #333;
+}
+
+.prjsubtncont{
+  display: flex;
+  gap: 20px;
+}
+
+.prjheadcontainerbtn{
+  width: 150px;
+  height: 50px;
+  border: 3px solid #1F79E5;
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #1F79E5;
+}
+
+.headbtnactive{
+  color: white;
+  background-color: #1F79E5;
+}
+
+.custom-modalmainproject{
+  min-width: 1000px;
+}
+
+.custom-modalmainproject .modal-content {
+  height: 800px;
+  border-radius: 20px;
+}
+
+.addpartform label{
+  font-size: 24px;
+  color: #1F79E5;
+}
+
+.addpartform input,.addpartform textarea{
+  border: 2px solid #1F79E5;
+  border-radius: 6px;
+  background-color: #1f78e516;
+  resize: none;
+  padding: 10px;
+}
+
+.addpartform input:focus,.addpartform textarea:focus{
+  outline: none;
+}
+
+.addpartbtn-edit,.addpartbtn-delete{
+  border: none;
+  border-radius: 6px;
+  width:24px;
+  height: 24px;
+  color: white;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addpartbtn-edit span,.addpartbtn-delete span{
+  font-size: 20px;
+}
+
+.addpartbtn-edit{
+  background-color: #fcb120;
+}
+.addpartbtn-delete{
+  background-color: #ff2c2c;
+}
+
+.customaddesc {
+  padding-top: 10px; 
+  line-height: 1.2; 
+}
+
+.custom-modalprogress{
+  min-width: 1020px;
+}
+
+.custom-modalprogress .modal-content {
+  height: 800px;
+  border-radius: 20px;
+}
+
+.modalinputcustom:focus{
+  outline: none;
+}
+
+.custom-modalapproval{
+  min-width: 1000px;
+}
+
+.custom-modalapproval .modal-content {
+  height: 700px;
+  border-radius: 20px;
+}
+
+.custom-modaladdpart{
+  min-width: 1000px;
+}
+
+.custom-modaladdpart .modal-content {
+  height: 700px;
+  border-radius: 20px;
+
+}
+.progress-bar{
+  background-color: #1F79E5 !important;
+}
+
+.customcolprjk{
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-modal3{
+  max-width: 400px !important;
+}
+
+.custom-modal3 .modal-content {
+  height: 500px !important;
+  border-radius: 20px !important;
+}
+
+.custom-modal4{
+  max-width: 300px !important;
+}
+
+.custom-modal4 .modal-content {
+  height: 300px !important;
+  border-radius: 20px !important;
+}

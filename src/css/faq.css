@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto';
+}
+
+.faqsect {
+  background-image: url('assets/faq-bg.png');
+  background-size: 140%;
+  background-repeat: no-repeat;
+  background-position: 45% 95%;
+  padding: 40px 102px;
+}
+
+.bannertextfaq {
+  width: 600px !important;
+}
+
+.bannertextfaq h1 {
+  font-size: 50px !important;
+  font-weight: bold;
+  color: #4a4a4a !important;
+}
+
+.bannertextfaq h1 span {
+  color: #1f79e5;
+}
+
+.searchsec {
+  margin-top: 60px;
+}
+
+.searchsec p {
+  font-size: 30px;
+  font-weight: bold;
+  color: #2b2b2b !important;
+  text-overflow: ellipsis;
+}
+
+.input-containerfaq {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  color: #757575 !important;
+}
+
+.input-containerfaq input {
+  background-color: #ffffff !important;
+  width: 205px;
+  padding-left: 40px;
+  box-sizing: border-box;
+  height: 51px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.faqcontain {
+  margin-top: 20px !important;
+  margin-bottom: 40px !important;
+}
+
+.row-cols-1.row-cols-md-2.row-cols-lg-3 .faqcard {
+  margin-bottom: 20px;
+}
+
+.pagination {
+  --bs-pagination-color: #1F79E5 !important;
+  --bs-pagination-bg: Transparent !important;
+  --bs-pagination-border-color: none !important;
+  gap: 15px;
+}
+
+.active > .page-link,
+.page-link.active {
+  color: #ffffff !important;
+  background-color: #1F79E5 !important;
+  border-radius: 5px !important;
+}
+
+.page-link {
+  font-size: 18px !important;
+}

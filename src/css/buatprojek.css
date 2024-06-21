@@ -1,0 +1,230 @@
+.btpryksec{
+    font-family: 'Roboto';
+}
+
+.btprjbanner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.bannerbtprjktitle{
+    width: 469px;
+    height: 400px !important;
+}
+
+.bannerbtprjktitle h1{
+    font-size: 50px;
+    font-weight: bold;
+    color: #1F79E5;
+}
+
+.bannerbtprjktitle span{
+    color: #4a4a4a;
+}
+
+.bannerbtprjktitle p{
+    color: #292929;
+    font-size: 24px;
+}
+
+.btprjbanner img{
+    width: 464px;
+    height: 464px;
+}
+
+.btprjkfrmheader{
+    margin: 40px 0 !important;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btprjkfrmheader h4{
+    color: #7E7E7E;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.questionboxbtprjk{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 60% !important;
+    height: 75px;
+    background-color: #F4FAFC;
+}
+
+.questionboxbtprjk p{
+    margin: 0;
+    color: #7E7E7E;
+    font-size: 20px;
+}
+
+.questionboxbtprjk a{
+    color: #7E7E7E !important;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: underline !important;
+}
+
+.btprjkfrm{
+    padding: 20px 10vw;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.btprjfrmlabel{
+    font-size: 25px;
+    font-weight: bold;
+    color: #7E7E7E;
+}
+
+.btncnfrmwrapper{
+    background-color: transparent;
+    border: none;
+}
+
+.backprjbtn{
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #7E7E7E;
+    font-weight: bold;
+    font-size: 20px;
+    gap: 5px;
+}
+
+.cnfmtitle{
+    margin: 50px 0;
+    font-size: 40px;
+    font-weight: bold;
+    color: #7E7E7E;
+}
+
+.cnfmtitle span{
+    color: #1F79E5;
+}
+
+.btprjkconfirmcont{
+    margin-top: 60px;
+    padding: 0 10vw;
+}
+
+.btprjkconfirm{
+    background-color: #F4FAFC;
+    padding: 50px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.btprjkconfirm h4{
+    font-size: 32px;
+    font-weight: bold;
+    color: #4a4a4a;
+}
+
+.btprjkconfirm span{
+    color: #1F79E5;
+}
+
+.cnfmfieldname{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cnfmfieldvalue{
+    font-size: 20px;
+}
+
+.cnfrmbtncont{
+    margin-bottom: 100px;
+}
+
+.custom-modal .modal-dialog {
+    max-width: 500px;
+}
+
+.custom-modal .modal-content {
+    height: 700px;
+    border-radius: 20px;
+}
+
+.custom-modal-header {
+    background-color: #1F79E5;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 90px;
+}
+
+.paymentcnfrm{
+    background-color: #d9d9d9;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    height: 150px;
+}
+
+.paymentcnfrm p{
+    margin: 0 !important;
+}
+
+.paymentcnfrmbdy{
+    padding: 0 !important;
+}
+
+.paymentmethodscont{
+    padding: 10px 30px 20px 30px;
+}
+
+.pymthdtitle{
+    font-size: 24px;
+    font-weight: bold;
+    color: #7E7E7E;
+}
+
+.paymentcnfrmbtncont{
+    padding: 0px 20px 20px 20px;
+    height: 65px;
+}
+
+.paymentcancelbtn{
+    border: none;
+    background-color: transparent;
+    width: 100px;
+    height: 45px;
+}
+
+.paycnfrmbtn{
+    margin-top: 0;
+}
+
+.confirm2payment{
+    padding: 30px;
+}
+
+.confirm2payment img{
+    object-fit: contain;
+    width: 100px;
+}
+
+.confirm2payment p{
+    margin: 0;
+}
+
+.custom-modal2{
+    max-width: 400px;
+}
+
+.custom-modal2 .modal-content {
+    height: 500px;
+    border-radius: 20px;
+}

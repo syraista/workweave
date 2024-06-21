@@ -1,0 +1,81 @@
+.kategoriapp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.input-containerapp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.filter-container {
+  display: flex;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.filter-label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#homesearch {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.search-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.kategoriapp-bg {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.kategoricard2137 {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 300px;
+  margin: 10px;
+}
+
+.kategoricard2137 img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #6c757d;
+}
