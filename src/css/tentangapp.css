@@ -1,0 +1,55 @@
+.tentangappsec {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .content-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 20px;
+  }
+  
+  .titletexttentangapp {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .text-content {
+    flex: 1;
+  }
+  
+  .text-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .text-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  .titletexttentangapp img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 400px;
+    flex: 1;
+  }
+  
+  .additional-text {
+    margin-top: 20px;
+  }
+  
+  .additional-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin: 0 auto;
+    padding: 20px;
+     }
+  

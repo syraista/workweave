@@ -1,0 +1,30 @@
+.bannersec {
+  width: 100vw;
+  height: 540px;
+  padding: 99px 0 99px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  background-image: url('/assets/Banner.png');
+  background-size: 910px 609px;
+  background-position: top 0px right 0px;
+  background-repeat: no-repeat;
+  font-family: 'Roboto';
+}
+
+.bannersec h1 {
+  color: #4a4a4a;
+  font-size: 60px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.bannersec h1 span {
+  color: #1f79e5;
+}
+
+.bannersec p {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 98px;
+}

@@ -1,0 +1,60 @@
+.bannerhomesec {
+  height: 557px;
+  width: 100%;
+  padding: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bannerhomesec img {
+  width: 508px;
+  height: 508px;
+}
+
+.titletextban {
+  width: 566px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-family: 'Roboto';
+}
+
+.titletextban h1 {
+  font-size: 60px;
+  font-weight: bold;
+  color: #2b2b2b;
+}
+
+.titletextban span {
+  color: #1f79e5;
+}
+
+.titletextban p {
+  color: #292929;
+  font-size: 20px;
+}
+
+.input-containerhom {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  color: #757575 !important;
+}
+
+.input-containerhom input {
+  width: 100%;
+  padding-left: 40px;
+  box-sizing: border-box;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+}
