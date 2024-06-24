@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import axios from "axios"; // Import Axios
-
+import Cookies from 'js-cookie';
 import Navigationbar from "../../component/Navigationbar";
 import Footer from "../../component/Footer";
 import Form from "react-bootstrap/Form";
@@ -47,7 +47,7 @@ export default function Buatproyek() {
     console.log(formData);
     axios
       .post("http://localhost:3000/api/client/projects", {
-        client_id: "68964b0f-2e1a-11ef-83c5-7c8ae1b20aa3",
+        client_id: Cookies.get('id'),
         title: formData.projectTitle,
         description: formData.projectDescription,
         status: "open",
@@ -459,14 +459,14 @@ export default function Buatproyek() {
       >
         <Modal.Body className="d-flex flex-column justify-content-between p-5">
           <div className="d-flex flex-column justify-content-between align-items-center gap-4 p-4">
-            <img style={{ width: "50px" }} src="assets/done.png" />
+            <img style={{ width: "50px" }} src="../assets/done.png" />
             <p style={{ fontSize: "20px" }}>Pembayaran Berhasil</p>
             <p style={{ fontSize: "20px", fontWeight: "bold" }}>Rp 15.000</p>
             <p style={{ fontSize: "20px", color: "#7e7e7e" }}>ID #842526363</p>
           </div>
           <Link
             style={{ textDecoration: "none" }}
-            to={"/Proyek"}
+            to={"/projects"}
             className="w-100 d-flex justify-content-center"
           >
             <Buttonelement

@@ -1,13 +1,14 @@
 import Navigationabar from "../../component/Navigationbar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Cookies from 'js-cookie';
 import Footer from "../../component/Footer";
 import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 export default function KategoriItem() {
-  const workerId = '01903c8e-2bda-7773-8eed-ef0cd939b17a';
+  const workerId = Cookies.get('id');
   const [projectData, setProjectData] = useState([]);
   const { item } = useParams();
 

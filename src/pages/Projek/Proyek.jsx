@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import axios from "axios";
+import Cookies from 'js-cookie';
 import Navigationbar from "../../component/Navigationbar";
 import Footer from "../../component/Footer";
 import "../../css/project.css";
@@ -164,7 +165,7 @@ const workerdonelist = [
 ];
 
 export default function Proyek() {
-  const clientId = "01903aa8-8133-7991-a05b-565f87147547";
+  const clientId = Cookies.get('id');
   const [projectsData, setProjectsData] = useState([]);
   const [openProjects, setOpenProjects] = useState([]);
   const [inProgressProjects, setInProgressProjects] = useState([]);
@@ -177,8 +178,8 @@ export default function Proyek() {
           `http://localhost:3000/api/client/projects/client/${clientId}`
         );
         const projects = response.data.data.projects; // Accessing projects array
-        setProjectsData(projects);
-        console.log(projects);
+        // setProjectsData(projects);
+        // console.log(projects);
 
         // Filter projects based on their status
         const open = projects.filter(project => project.status === 'open');
@@ -227,7 +228,7 @@ export default function Proyek() {
   };
   const handleOpenModalapproval = (id) => {
     setProjectId(id);
-    console.log(id);
+    // console.log(id);
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -238,8 +239,8 @@ export default function Proyek() {
           (application) => application.application_status === "pending"
         );
         setApplicationData(pendingApplications);
-        console.log("sini");
-        console.log(applications);
+        // console.log("sini");
+        // console.log(applications);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -247,7 +248,7 @@ export default function Proyek() {
     fetchData();
     setShowModalapproval(true);
   };
-  console.log(applicationData);
+  // console.log(applicationData);
 
   const [showModaladdpart, setShowModaladdpart] = useState(false);
   const [editPart, setEditPart] = useState(false);
@@ -308,9 +309,9 @@ export default function Proyek() {
   };
 
   const handleOpenModalapprovalresultaccept = () => {
-    console.log('terima');
-    console.log(projectId)
-    console.log(applicationId);
+    // console.log('terima');
+    // console.log(projectId)
+    // console.log(applicationId);
     const fetchData = async () => {
       try {
         const request = {
@@ -319,7 +320,7 @@ export default function Proyek() {
         const response = await axios.put(
           `http://localhost:3000/api/client/projects/${projectId}/applications/${applicationId}`, request
         );
-        console.log(response);
+        // console.log(response);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -343,7 +344,7 @@ export default function Proyek() {
         const response = await axios.put(
           `http://localhost:3000/api/client/projects/${projectId}/applications/${applicationId}`, request
         );
-        console.log(response);
+        // console.log(response);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -405,7 +406,7 @@ export default function Proyek() {
               Pekerja
             </button>
           </div>
-          <Link style={{ textDecoration: "none" }} to="/Buatproyek">
+          <Link style={{ textDecoration: "none" }} to="/projects/create">
             <button className="createprjbtn">
               Buat proyek<span className="material-symbols-outlined">add</span>
             </button>

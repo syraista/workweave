@@ -8,6 +8,13 @@ const KategoriApp = ({ title, img, desc, price, kat, link }) => {
     }).format(number);
   };
 
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + '...';
+    }
+    return text;
+  };
+
   return (
     <a style={{ textDecoration: 'none' }} href={link}>
       <Card style={{ width: '364.55px', height: '391px', borderRadius: '19.24px', marginBottom: '50px', boxShadow: '0px 0px 6.25px 0px rgba(0,0,0,0.25)', overflow: 'hidden' }}>
@@ -16,7 +23,7 @@ const KategoriApp = ({ title, img, desc, price, kat, link }) => {
           <img style={{ width: '19.24px', height: '19.24px', marginTop: '2px' }} src={`/assets/kategori-icon/${kat}.png`} />
           <div className="d-flex flex-column w-100">
             <h3 style={{ fontSize: '19.24px', fontWeight: 'bold' }}>{title}</h3>
-            <p style={{ fontSize: '10.58px', marginBottom: '5px' }}>{desc}</p>
+            <p style={{ fontSize: '10.58px', marginBottom: '5px' }}>{truncateText(desc, 100)}</p>
             <div className="d-flex">
               {/* <span style={{ fontSize: '16px', color: '#aaaaaa' }} className="material-symbols-outlined">
                 person
