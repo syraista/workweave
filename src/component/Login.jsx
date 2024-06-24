@@ -242,7 +242,7 @@ const Login = () => {
               <Form.Check
                 inline
                 type="radio"
-                label="Client"
+                label="Pemilik"
                 name="role"
                 value="client"
                 checked={formData.role === "client"}
@@ -251,7 +251,7 @@ const Login = () => {
               <Form.Check
                 inline
                 type="radio"
-                label="Worker"
+                label="Pekerja"
                 name="role"
                 value="worker"
                 checked={formData.role === "worker"}

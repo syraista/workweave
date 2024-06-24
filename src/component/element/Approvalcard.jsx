@@ -4,7 +4,7 @@ export default function Approvalcard({ imgSrc, nama, cvlink, aconClick, dconClic
   return (
     <div className="approvalcrdmain" style={{ userSelect: 'none' }}>
       <div style={{ gap: '20px' }} className="d-flex align-items-center">
-        <img src={imgSrc} style={{ width: '57px' }} alt="image" />
+        <img src='/assets/profile-dummy.png' style={{ width: '57px' }} alt="image" />
         <hr style={{ width: '2px', height: '100%', backgroundColor: 'grey', margin: '0' }} />
         <h4 style={{ margin: '0', fontSize: '25px', fontWeight: 'bold' }}>{nama}</h4>
       </div>

@@ -32,140 +32,10 @@ function getColor(progress) {
   }
 }
 
-const workerapprovallist = [
-  {
-    id: "1",
-    type: "workerappr",
-    img: "/assets/kategori-icon/aplikasi.png",
-    judul: "Database Pengguna dan Penjual",
-    membercount: 0,
-    notifcount: 1,
-    accepted: 1,
-  },
-  {
-    id: "2",
-    type: "workerappr",
-    img: "/assets/kategori-icon/desain-produk.png",
-    judul: "Desain Kemasan Mie Instant",
-    membercount: 1,
-    notifcount: 1,
-    accepted: 1,
-  },
-  {
-    id: "3",
-    type: "workerappr",
-    img: "/assets/kategori-icon/desain-grafis.png",
-    judul: "Desain Logo Perusahaan",
-    membercount: 1,
-    notifcount: 0,
-    accepted: 0,
-  },
-  {
-    id: "4",
-    type: "workerappr",
-    img: "/assets/kategori-icon/kat-14.png",
-    judul: "Pembuatan Map Event Terbaru",
-    membercount: 4,
-    notifcount: 0,
-    accepted: 0,
-  },
-  {
-    id: "5",
-    type: "workerappr",
-    img: "/assets/kategori-icon/kat-10.png",
-    judul: "Desain Kostum IndoFest",
-    membercount: 0,
-    notifcount: 0,
-    accepted: 0,
-  },
-];
-const workerrunninglist = [
-  {
-    id: "1",
-    type: "regular",
-    img: "/assets/kategori-icon/aplikasi.png",
-    judul: "Database Pengguna dan Penjual",
-    membercount: 6,
-    progress: 86,
-  },
-  {
-    id: "2",
-    type: "regular",
-    img: "/assets/kategori-icon/desain-produk.png",
-    judul: "Desain Kemasan Mie Instant",
-    membercount: 6,
-    progress: 40,
-  },
-  {
-    id: "3",
-    type: "regular",
-    img: "/assets/kategori-icon/desain-grafis.png",
-    judul: "Desain Logo Perusahaan",
-    membercount: 6,
-    progress: 63,
-  },
-  {
-    id: "4",
-    type: "regular",
-    img: "/assets/kategori-icon/kat-14.png",
-    judul: "Pembuatan Map Event Terbaru",
-    membercount: 6,
-    progress: 10,
-  },
-  {
-    id: "5",
-    type: "regular",
-    img: "/assets/kategori-icon/kat-10.png",
-    judul: "Desain Kostum IndoFest",
-    membercount: 6,
-    progress: 97,
-  },
-];
-const workerdonelist = [
-  {
-    id: "1",
-    type: "regular",
-    img: "/assets/kategori-icon/aplikasi.png",
-    judul: "Database Pengguna dan Penjual",
-    membercount: 6,
-    progress: 100,
-  },
-  {
-    id: "2",
-    type: "regular",
-    img: "/assets/kategori-icon/desain-produk.png",
-    judul: "Desain Kemasan Mie Instant",
-    membercount: 6,
-    progress: 100,
-  },
-  {
-    id: "3",
-    type: "regular",
-    img: "/assets/kategori-icon/desain-grafis.png",
-    judul: "Desain Logo Perusahaan",
-    membercount: 6,
-    progress: 100,
-  },
-  {
-    id: "4",
-    type: "regular",
-    img: "/assets/kategori-icon/kat-14.png",
-    judul: "Pembuatan Map Event Terbaru",
-    membercount: 6,
-    progress: 100,
-  },
-  {
-    id: "5",
-    type: "regular",
-    img: "/assets/kategori-icon/kat-10.png",
-    judul: "Desain Kostum IndoFest",
-    membercount: 6,
-    progress: 100,
-  },
-];
-
 export default function Proyek() {
   const id = Cookies.get("id");
+  const { pr1, pr2, pr3, pr4 } = { pr1: 50, pr2: 50, pr3: 50, pr4: 50 };
+  const allProgress  = (pr1+pr2+pr3+pr4)/4;
   const [clientOpenProjects, setClientOpenProjects] = useState([]);
   const [clientInProgressProjects, setClientInProgressProjects] = useState([]);
   const [clientCompletedProjects, setClientCompletedProjects] = useState([]);
@@ -242,7 +112,7 @@ export default function Proyek() {
         const pendingApp = await fetchProjects(pendingApplications);
         const inProgressApp = await fetchProjects(inProgressApplications);
         const completedApp = await fetchProjects(completedApplications);
-        console.log(pendingApp);
+        // console.log(pendingApp);
 
         const open = pendingApp.filter((project) => project.status === "open");
         const inProgress = inProgressApp.filter(
@@ -266,20 +136,78 @@ export default function Proyek() {
   const [activeButton, setActiveButton] = useState(Cookies.get("role"));
   const [activeHeadButton, setActiveHeadButton] = useState("berjalan");
 
+  const [ projectSelected, setProjectSelected ] = useState([]);
+  const [ applicationSelected, setApplicationSelected ] = useState([]);
+  const [ workerSelected, setWorkerSelected ] = useState([]);
   const [showModalmain, setShowModalmain] = useState(false);
   const handleCloseModalmain = () => {
     setShowModalmain(false);
+    // setProjectIdSelected([]);
   };
-  const handleOpenModalmain = () => {
+  const fetchWorkerData = async (id) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/api/client/projects/${id}`
+      );
+      const projectData = response.data.data.project;
+      setProjectSelected(projectData);
+      // console.log(projectSelected); // This will log the correct project data
+
+      const applicationsResponse = await axios.get(
+        `http://localhost:3000/api/client/projects/${projectData.id}/applications`
+      );
+      const applicationsData = applicationsResponse.data.data.applications;
+      // console.log(applicationsData);
+      // Filter applications to only include those with status "accepted"
+      const acceptedApplications = applicationsData.filter(app => app.status === 'accepted');
+      // console.log(acceptedApplications[0])
+      setApplicationSelected(acceptedApplications[0]);
+      // console.log(applicationSelected);
+
+      const workerResponse = await axios.get(
+        `http://localhost:3000/api/user/worker/${acceptedApplications[0].worker_id}`
+      );
+      const workerData = workerResponse.data.data;
+      setWorkerSelected(workerData)
+      console.log(workerData);
+    } catch (error) {
+      console.error("Error fetching project data:", error);
+    }
+  }
+  const handleOpenModalmain = async (id) => {
     setShowModalmain(true);
+    fetchWorkerData(id)
   };
+  
+  // const handleOpenModalmain = (id) => {
+  //   // console.log(id)
+  //   setShowModalmain(true);
+  //   const fetchProjects = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //           `http://localhost:3000/api/client/projects/${id}`
+  //         );
+  //       const projectData = response.data.data.project;
+  //       // console.log(projectData);
+  //       return projectData;
+  //     } catch (error) {
+  //       console.error("Error fetching project data:", error);
+  //     }
+  //   };
+  //   const project = await fetchProjects()
+  //   console.log(project);
+  //   setProjectIdSelected(project);
+  //   console.log(projectIdSelected);
+  // };
 
   const [showModalprogress, setShowModalprogress] = useState(false);
   const handleCloseModalprogress = () => {
     setShowModalprogress(false);
   };
-  const handleOpenModalprogress = () => {
+  const handleOpenModalprogress = (id) => {
+    console.log(id);
     setShowModalprogress(true);
+    fetchWorkerData(id)
     // setTimeout(() => {
     //   scrollToBottom();
     // }, 500);
@@ -305,6 +233,7 @@ export default function Proyek() {
         const pendingApplications = applications.filter(
           (application) => application.application_status === "pending"
         );
+        // console.log(pendingApplications);
         setApplicationData(pendingApplications);
         // console.log("sini");
         // console.log(applications);
@@ -577,6 +506,7 @@ export default function Proyek() {
                 memberCount={item.membercount}
                 type={item.type}
                 notifCount={item.notifcount}
+                // progress={allProgress}
                 onClick={() => {
                   handleOpenModalapproval(item.id);
                 }}
@@ -594,10 +524,10 @@ export default function Proyek() {
                 imgSrc={item.category}
                 title={item.title}
                 memberCount={item.membercount}
-                progress={item.progress}
+                progress={allProgress}
                 type={item.type}
                 onClick={() => {
-                  handleOpenModalmain();
+                  handleOpenModalmain(item.id);
                 }}
               />
             ))}
@@ -613,7 +543,7 @@ export default function Proyek() {
                 imgSrc={item.category}
                 title={item.title}
                 memberCount={item.membercount}
-                progress={item.progress}
+                progress={allProgress}
                 type={item.type}
               />
             ))}
@@ -651,7 +581,7 @@ export default function Proyek() {
                 progress={item.progress}
                 type={item.type}
                 onClick={() => {
-                  handleOpenModalprogress();
+                  handleOpenModalprogress(item.id);
                 }}
               />
             ))}
@@ -688,7 +618,7 @@ export default function Proyek() {
                 <div className="d-flex justify-content-center align-items-center gap-4">
                   <img
                     style={{ width: "83px", height: "83px" }}
-                    src="assets/kategori-icon/aplikasi.png"
+                    src={`/assets/kategori-icon/${projectSelected.category}.png`}
                   />
                   <h3
                     style={{
@@ -697,7 +627,7 @@ export default function Proyek() {
                       color: "#343434",
                     }}
                   >
-                    Database Pengguna dan Penjual
+                    {projectSelected.title}
                   </h3>
                 </div>
                 <div
@@ -705,8 +635,8 @@ export default function Proyek() {
                   style={{ width: "100px" }}
                 >
                   <CircularProgressbar
-                    value={86}
-                    text={`86%`}
+                    value={allProgress}
+                    text={`${allProgress}%`}
                     styles={buildStyles({
                       rotation: 0,
                       textSize: "26px",
@@ -738,7 +668,7 @@ export default function Proyek() {
                         overflow: "hidden",
                       }}
                     >
-                      <ProgressBar now={100} />
+                      <ProgressBar now={pr1} />
                     </div>
                     <div
                       style={{
@@ -761,7 +691,7 @@ export default function Proyek() {
                         overflow: "hidden",
                       }}
                     >
-                      <ProgressBar now={100} />
+                      <ProgressBar now={pr2} />
                     </div>
                     <div
                       style={{
@@ -784,7 +714,7 @@ export default function Proyek() {
                         overflow: "hidden",
                       }}
                     >
-                      <ProgressBar now={20} />
+                      <ProgressBar now={pr3} />
                     </div>
                     <div
                       style={{
@@ -807,7 +737,7 @@ export default function Proyek() {
                         overflow: "hidden",
                       }}
                     >
-                      <ProgressBar now={0} />
+                      <ProgressBar now={pr4} />
                     </div>
                     <div
                       style={{
@@ -826,11 +756,11 @@ export default function Proyek() {
               <div className="col customcolprjk">
                 <Proyekusercard
                   imgSrc={"/assets/avatardummy.png"}
-                  name={"Zenarith Vandora"}
-                  pr1={100}
-                  pr2={100}
-                  pr3={60}
-                  pr4={0}
+                  name={workerSelected.name}
+                  pr1={pr1}
+                  pr2={pr2}
+                  pr3={pr3}
+                  pr4={pr4}
                   notifCount={3}
                   onClickprog={handleOpenModalprogress}
                 />
@@ -919,7 +849,7 @@ export default function Proyek() {
                     color: "#343434",
                   }}
                 >
-                  Zenarith Vandora
+                  {workerSelected.name}
                 </h3>
               </div>
               <button
@@ -961,7 +891,7 @@ export default function Proyek() {
                     overflow: "hidden",
                   }}
                 >
-                  <ProgressBar now={100} />
+                  <ProgressBar now={pr1} />
                 </div>
                 <div
                   style={{
@@ -984,7 +914,7 @@ export default function Proyek() {
                     overflow: "hidden",
                   }}
                 >
-                  <ProgressBar now={100} />
+                  <ProgressBar now={pr2} />
                 </div>
                 <div
                   style={{
@@ -1007,7 +937,7 @@ export default function Proyek() {
                     overflow: "hidden",
                   }}
                 >
-                  <ProgressBar now={20} />
+                  <ProgressBar now={pr3} />
                 </div>
                 <div
                   style={{
@@ -1030,7 +960,7 @@ export default function Proyek() {
                     overflow: "hidden",
                   }}
                 >
-                  <ProgressBar now={0} />
+                  <ProgressBar now={pr4} />
                 </div>
                 <div
                   style={{
@@ -1248,7 +1178,7 @@ export default function Proyek() {
                   applicationData.map((item) => (
                     <Approvalcard
                       key={item.id}
-                      imgSrc={item.profile_picture}
+                      imgSrc={item.category}
                       nama={item.name}
                       aconClick={() =>
                         handleOpenModalapprovalconfirmAccept(item.id)
