@@ -280,9 +280,9 @@ export default function Proyek() {
   };
   const handleOpenModalprogress = () => {
     setShowModalprogress(true);
-    setTimeout(() => {
-      scrollToBottom();
-    }, 500);
+    // setTimeout(() => {
+    //   scrollToBottom();
+    // }, 500);
   };
 
   // application
@@ -688,7 +688,7 @@ export default function Proyek() {
                 <div className="d-flex justify-content-center align-items-center gap-4">
                   <img
                     style={{ width: "83px", height: "83px" }}
-                    src="/assets/kategori-icon/aplikasi.png"
+                    src="assets/kategori-icon/aplikasi.png"
                   />
                   <h3
                     style={{

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { Form, Spinner } from "react-bootstrap";
 import Buttonelement from "./element/Buttonelement";
-import axios from 'axios';
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../css/loginregist.css";
 import { loginRequest, registerRequest } from "../service/authRequest";
@@ -94,13 +94,14 @@ const Login = () => {
       setRegisterErrors(formErrors);
     } else {
       setIsLoading(true);
+      console.log(formData);
       try {
         const request = {
           email: formData.email,
           password: formData.password,
           name: formData.fullName,
           username: formData.username,
-          role: "client",
+          role: formData.role,
         };
         const response = await registerRequest(request);
         console.log("Register Successful:", response);
@@ -151,11 +152,6 @@ const Login = () => {
               {loginErrors.password}
             </Form.Control.Feedback>
           </Form.Group>
-          {/* <div className="d-flex justify-content-end align-items-center mb-2">
-            <Link className="forgot-password" to="/forgot-password">
-              Lupa Password?
-            </Link>
-          </div> */}
           <Buttonelement
             width={"100%"}
             fw={400}
@@ -240,12 +236,29 @@ const Login = () => {
             </Form.Control.Feedback>
           </Form.Group>
 
-          {/* <Form.Group controlId="formAgreement" className="mb-2">
-            <Form.Check
-              type="checkbox"
-              label="Dengan mendaftar, saya menyetujui syarat dan ketentuan Work Weave"
-            />
-          </Form.Group> */}
+          <Form.Group controlId="formRoles" className="mt-4">
+            <Form.Label>Pilih Role</Form.Label>
+            <div>
+              <Form.Check
+                inline
+                type="radio"
+                label="Client"
+                name="role"
+                value="client"
+                checked={formData.role === "client"}
+                onChange={handleInputChange}
+              />
+              <Form.Check
+                inline
+                type="radio"
+                label="Worker"
+                name="role"
+                value="worker"
+                checked={formData.role === "worker"}
+                onChange={handleInputChange}
+              />
+            </div>
+          </Form.Group>
 
           <Buttonelement
             width={"100%"}
