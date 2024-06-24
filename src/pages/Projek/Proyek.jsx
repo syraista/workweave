@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import axios from "axios";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import Navigationbar from "../../component/Navigationbar";
 import Footer from "../../component/Footer";
 import "../../css/project.css";
@@ -165,38 +165,105 @@ const workerdonelist = [
 ];
 
 export default function Proyek() {
-  const clientId = Cookies.get('id');
-  const [projectsData, setProjectsData] = useState([]);
-  const [openProjects, setOpenProjects] = useState([]);
-  const [inProgressProjects, setInProgressProjects] = useState([]);
-  const [completedProjects, setCompletedProjects] = useState([]);
+  const id = Cookies.get("id");
+  const [clientOpenProjects, setClientOpenProjects] = useState([]);
+  const [clientInProgressProjects, setClientInProgressProjects] = useState([]);
+  const [clientCompletedProjects, setClientCompletedProjects] = useState([]);
+
+  const [workerOpenProjects, setWorkerOpenProjects] = useState([]);
+  const [workerInProgressProjects, setWorkerInProgressProjects] = useState([]);
+  const [workerCompletedProjects, setWorkerCompletedProjects] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDataClient = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/client/projects/client/${clientId}`
+          `http://localhost:3000/api/client/projects/client/${id}`
         );
         const projects = response.data.data.projects; // Accessing projects array
         // setProjectsData(projects);
         // console.log(projects);
 
         // Filter projects based on their status
-        const open = projects.filter(project => project.status === 'open');
-        const inProgress = projects.filter(project => project.status === 'in_progress');
-        const completed = projects.filter(project => project.status === 'completed');
+        const open = projects.filter((project) => project.status === "open");
+        const inProgress = projects.filter(
+          (project) => project.status === "in_progress"
+        );
+        const completed = projects.filter(
+          (project) => project.status === "completed"
+        );
 
-        setOpenProjects(open);
-        setInProgressProjects(inProgress);
-        setCompletedProjects(completed);
+        setClientOpenProjects(open);
+        setClientInProgressProjects(inProgress);
+        setClientCompletedProjects(completed);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-    fetchData();
+    const fetchDataWorker = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/api/user/applications/${id}`
+        );
+        const applications = response.data.data.application; // Accessing applications array
+
+        // console.log(response);
+        // Filter applications based on their status
+
+        // console.log(applications);
+        const pendingApplications = applications.filter(
+          (application) => application.status === "pending"
+        );
+        const inProgressApplications = applications.filter(
+          (application) => application.status === "accepted"
+        );
+        const completedApplications = applications.filter(
+          (application) => application.status === "accepted"
+        );
+        // console.log(pendingApplications)
+
+        const fetchProjects = async (application) => {
+          try {
+            const response = await application.map((application) =>
+              axios.get(
+                `http://localhost:3000/api/worker/projects/${application.project_id}`
+              )
+            );
+            const projectResponses = await Promise.all(response);
+            const projectData = projectResponses.map(
+              (response) => response.data.data.project
+            );
+            return projectData;
+          } catch (error) {
+            console.error("Error fetching project data:", error);
+          }
+        };
+
+        const pendingApp = await fetchProjects(pendingApplications);
+        const inProgressApp = await fetchProjects(inProgressApplications);
+        const completedApp = await fetchProjects(completedApplications);
+        console.log(pendingApp);
+
+        const open = pendingApp.filter((project) => project.status === "open");
+        const inProgress = inProgressApp.filter(
+          (project) => project.status === "in_progress"
+        );
+        const completed = completedApp.filter(
+          (project) => project.status === "completed"
+        );
+
+        setWorkerOpenProjects(open);
+        setWorkerInProgressProjects(inProgress);
+        setWorkerCompletedProjects(completed);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchDataWorker();
+    fetchDataClient();
   }, []);
 
-  const [activeButton, setActiveButton] = useState("owner");
+  const [activeButton, setActiveButton] = useState(Cookies.get("role"));
   const [activeHeadButton, setActiveHeadButton] = useState("berjalan");
 
   const [showModalmain, setShowModalmain] = useState(false);
@@ -220,7 +287,7 @@ export default function Proyek() {
 
   // application
   const [applicationData, setApplicationData] = useState([]);
-  const [ projectId, setProjectId ] = useState('');
+  const [projectId, setProjectId] = useState("");
   const [showModalapproval, setShowModalapproval] = useState(false);
   const handleCloseModalapproval = () => {
     setShowModalapproval(false);
@@ -269,8 +336,9 @@ export default function Proyek() {
 
   const [apName, setApName] = useState("");
   const [apType, setApType] = useState("");
-  const [ applicationId, setApplicationId ] = useState("");
-  const [showModalapprovalconfirm, setShowModalapprovalconfirm] = useState(false);
+  const [applicationId, setApplicationId] = useState("");
+  const [showModalapprovalconfirm, setShowModalapprovalconfirm] =
+    useState(false);
 
   const handleCloseModalapprovalconfirm = () => {
     setShowModalapprovalconfirm(false);
@@ -315,10 +383,11 @@ export default function Proyek() {
     const fetchData = async () => {
       try {
         const request = {
-          status: 'accepted'
-        }
+          status: "accepted",
+        };
         const response = await axios.put(
-          `http://localhost:3000/api/client/projects/${projectId}/applications/${applicationId}`, request
+          `http://localhost:3000/api/client/projects/${projectId}/applications/${applicationId}`,
+          request
         );
         // console.log(response);
       } catch (error) {
@@ -329,20 +398,21 @@ export default function Proyek() {
     setShowModalapprovalconfirm(false);
     setRsType("accept");
     setShowModalapprovalresult(true);
-    setShowModalapproval(false)
+    setShowModalapproval(false);
     setTimeout(() => {
       setApType("");
     }, 500);
   };
   const handleOpenModalapprovalresultdecline = () => {
-    console.log('tidak terima');
+    console.log("tidak terima");
     const fetchData = async () => {
       try {
         const request = {
-          status: 'rejected'
-        }
+          status: "rejected",
+        };
         const response = await axios.put(
-          `http://localhost:3000/api/client/projects/${projectId}/applications/${applicationId}`, request
+          `http://localhost:3000/api/client/projects/${projectId}/applications/${applicationId}`,
+          request
         );
         // console.log(response);
       } catch (error) {
@@ -353,7 +423,7 @@ export default function Proyek() {
     setShowModalapprovalconfirm(false);
     setRsType("decline");
     setShowModalapprovalresult(true);
-    setShowModalapproval(false)
+    setShowModalapproval(false);
     setTimeout(() => {
       setApType("");
     }, 500);
@@ -387,9 +457,9 @@ export default function Proyek() {
           <div className="position-absolute top-50 start-50 translate-middle prjbtncont">
             <button
               className={`btnproject ${
-                activeButton === "owner" ? "prjbtnactivestate" : ""
+                activeButton === "client" ? "prjbtnactivestate" : ""
               }`}
-              onClick={() => setActiveButton("owner")}
+              onClick={() => setActiveButton("client")}
             >
               <span className="material-symbols-outlined">
                 supervisor_account
@@ -406,11 +476,16 @@ export default function Proyek() {
               Pekerja
             </button>
           </div>
-          <Link style={{ textDecoration: "none" }} to="/projects/create">
-            <button className="createprjbtn">
-              Buat proyek<span className="material-symbols-outlined">add</span>
-            </button>
-          </Link>
+          {activeButton === "client" ? (
+            <Link style={{ textDecoration: "none" }} to="/projects/create">
+              <button className="createprjbtn">
+                Buat proyek
+                <span className="material-symbols-outlined">add</span>
+              </button>
+            </Link>
+          ) : (
+            ""
+          )}
         </div>
 
         <div className="prjheadcontainer">
@@ -492,9 +567,9 @@ export default function Proyek() {
           </div>
         </div>
 
-        {(activeButton === "owner") & (activeHeadButton === "lamaran") ? (
+        {(activeButton === "client") & (activeHeadButton === "lamaran") ? (
           <div style={{ padding: "0 100px" }}>
-            {openProjects.map((item) => (
+            {clientOpenProjects.map((item) => (
               <Proyekcard
                 key={item.id}
                 imgSrc={item.category}
@@ -511,9 +586,9 @@ export default function Proyek() {
         ) : (
           ""
         )}
-        {(activeButton === "owner") & (activeHeadButton === "berjalan") ? (
+        {(activeButton === "client") & (activeHeadButton === "berjalan") ? (
           <div style={{ padding: "0 100px" }}>
-            {inProgressProjects.map((item) => (
+            {clientInProgressProjects.map((item) => (
               <Proyekcard
                 key={item.id}
                 imgSrc={item.category}
@@ -530,9 +605,9 @@ export default function Proyek() {
         ) : (
           ""
         )}
-        {(activeButton === "owner") & (activeHeadButton === "selesai") ? (
+        {(activeButton === "client") & (activeHeadButton === "selesai") ? (
           <div style={{ padding: "0 100px" }}>
-            {completedProjects.map((item) => (
+            {clientCompletedProjects.map((item) => (
               <Proyekcard
                 key={item.id}
                 imgSrc={item.category}
@@ -549,11 +624,11 @@ export default function Proyek() {
 
         {(activeButton === "worker") & (activeHeadButton === "lamaran") ? (
           <div style={{ padding: "0 100px" }}>
-            {openProjects.map((item) => (
+            {workerOpenProjects.map((item) => (
               <Proyekcard
                 key={item.id}
                 imgSrc={item.category}
-                judul={item.judul}
+                title={item.title}
                 memberCount={item.membercount}
                 type={item.type}
                 notifCount={item.notifcount}
@@ -567,16 +642,16 @@ export default function Proyek() {
         )}
         {(activeButton === "worker") & (activeHeadButton === "berjalan") ? (
           <div style={{ padding: "0 100px" }}>
-            {inProgressProjects.map((item) => (
+            {workerInProgressProjects.map((item) => (
               <Proyekcard
                 key={item.id}
                 imgSrc={item.category}
-                judul={item.judul}
+                title={item.title}
                 memberCount={item.membercount}
                 progress={item.progress}
                 type={item.type}
                 onClick={() => {
-                  handleOpenModalmain();
+                  handleOpenModalprogress();
                 }}
               />
             ))}
@@ -586,11 +661,11 @@ export default function Proyek() {
         )}
         {(activeButton === "worker") & (activeHeadButton === "selesai") ? (
           <div style={{ padding: "0 100px" }}>
-            {completedProjects.map((item) => (
+            {workerCompletedProjects.map((item) => (
               <Proyekcard
                 key={item.id}
                 imgSrc={item.category}
-                judul={item.judul}
+                title={item.title}
                 memberCount={item.membercount}
                 progress={item.progress}
                 type={item.type}
@@ -854,7 +929,7 @@ export default function Proyek() {
                   fontSize: "18px",
                   width: "176px",
                   height: "45px",
-                  display: activeButton === "owner" ? "flex" : "none",
+                  display: activeButton === "client" ? "flex" : "none",
                 }}
               >
                 Buat Tahapan
@@ -866,7 +941,9 @@ export default function Proyek() {
                 </span>
               </button>
               <div
-                style={{ display: activeButton === "owner" ? "none" : "block" }}
+                style={{
+                  display: activeButton === "client" ? "none" : "block",
+                }}
               />
             </div>
             <div
